@@ -1,6 +1,6 @@
 [ {
   "accountNumber" : "PMF1001201",
-  "bankCode" : "001",
+  "bankCode" : "PMFTSL1K",
   "accountHolderName" : "Ahmed Mohamed",
   "holderIdentificationType" : "NIC",
   "holderIdentificationNumber" : "A123456",
@@ -9,7 +9,7 @@
   "currency" : "MVR"
 }, {
   "accountNumber" : "PMF2003456",
-  "bankCode" : "001",
+  "bankCode" : "PMFTSL1K",
   "accountHolderName" : "Ibrahim Nasir",
   "holderIdentificationType" : "NIC",
   "holderIdentificationNumber" : "B234567",
@@ -18,7 +18,7 @@
   "currency" : "MVR"
 }, {
   "accountNumber" : "PMF3009981",
-  "bankCode" : "001",
+  "bankCode" : "PMFTSL1K",
   "accountHolderName" : "Aishath Liyana",
   "holderIdentificationType" : "NIC",
   "holderIdentificationNumber" : "C345678",
@@ -27,7 +27,7 @@
   "currency" : "MVR"
 }, {
   "accountNumber" : "4567812345",
-  "bankCode" : "002",
+  "bankCode" : "CHBKSL3J",
   "accountHolderName" : "John Smith",
   "holderIdentificationType" : "PASSPORT",
   "holderIdentificationNumber" : "P9988776",
@@ -36,7 +36,7 @@
   "currency" : "USD"
 }, {
   "accountNumber" : "8945621103",
-  "bankCode" : "002",
+  "bankCode" : "CHBKSL3J",
   "accountHolderName" : "Michael Brown",
   "holderIdentificationType" : "PASSPORT",
   "holderIdentificationNumber" : "M4433221",
@@ -45,7 +45,7 @@
   "currency" : "USD"
 }, {
   "accountNumber" : "1290045783",
-  "bankCode" : "002",
+  "bankCode" : "CHBKSL3J",
   "accountHolderName" : "Emma Wilson",
   "holderIdentificationType" : "NIC",
   "holderIdentificationNumber" : "D456789",
@@ -54,7 +54,7 @@
   "currency" : "USD"
 }, {
   "accountNumber" : "WF0002345678",
-  "bankCode" : "003",
+  "bankCode" : "WLFGSL6S",
   "accountHolderName" : "Robert Davis",
   "holderIdentificationType" : "PASSPORT",
   "holderIdentificationNumber" : "L8899002",
@@ -63,7 +63,7 @@
   "currency" : "USD"
 }, {
   "accountNumber" : "WF1009876543",
-  "bankCode" : "003",
+  "bankCode" : "WLFGSL6S",
   "accountHolderName" : "Sophia Harris",
   "holderIdentificationType" : "NIC",
   "holderIdentificationNumber" : "E567890",
@@ -72,7 +72,7 @@
   "currency" : "USD"
 }, {
   "accountNumber" : "WF9001122334",
-  "bankCode" : "003",
+  "bankCode" : "WLFGSL6S",
   "accountHolderName" : "Noah Anderson",
   "holderIdentificationType" : "PASSPORT",
   "holderIdentificationNumber" : "P1122998",
@@ -81,7 +81,7 @@
   "currency" : "USD"
 }, {
   "accountNumber" : "998877665544",
-  "bankCode" : "004",
+  "bankCode" : "CTBKSL2X",
   "accountHolderName" : "Olivia Martinez",
   "holderIdentificationType" : "NIC",
   "holderIdentificationNumber" : "F678901",
@@ -90,7 +90,7 @@
   "currency" : "USD"
 }, {
   "accountNumber" : "110022334455",
-  "bankCode" : "004",
+  "bankCode" : "CTBKSL2X",
   "accountHolderName" : "Ethan Walker",
   "holderIdentificationType" : "PASSPORT",
   "holderIdentificationNumber" : "W5566882",
@@ -99,7 +99,7 @@
   "currency" : "USD"
 }, {
   "accountNumber" : "221133445566",
-  "bankCode" : "004",
+  "bankCode" : "CTBKSL2X",
   "accountHolderName" : "Mia Johnson",
   "holderIdentificationType" : "NIC",
   "holderIdentificationNumber" : "G789012",
@@ -108,7 +108,7 @@
   "currency" : "USD"
 }, {
   "accountNumber" : "WB445501",
-  "bankCode" : "005",
+  "bankCode" : "WSTNSL4E",
   "accountHolderName" : "Lucas Carter",
   "holderIdentificationType" : "NIC",
   "holderIdentificationNumber" : "H890123",
@@ -117,7 +117,7 @@
   "currency" : "MVR"
 }, {
   "accountNumber" : "WB772210",
-  "bankCode" : "005",
+  "bankCode" : "WSTNSL4E",
   "accountHolderName" : "Ava Thompson",
   "holderIdentificationType" : "PASSPORT",
   "holderIdentificationNumber" : "T5511998",
@@ -126,7 +126,7 @@
   "currency" : "USD"
 }, {
   "accountNumber" : "WB123980",
-  "bankCode" : "005",
+  "bankCode" : "WSTNSL4E",
   "accountHolderName" : "Henry Wilson",
   "holderIdentificationType" : "NIC",
   "holderIdentificationNumber" : "J901234",
