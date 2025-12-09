@@ -1,0 +1,136 @@
+[ {
+  "accountNumber" : "PMF1001201",
+  "bankCode" : "001",
+  "accountHolderName" : "Ahmed Mohamed",
+  "holderIdentificationType" : "NIC",
+  "holderIdentificationNumber" : "A123456",
+  "balance" : 14800.75,
+  "status" : "ACTIVE",
+  "currency" : "MVR"
+}, {
+  "accountNumber" : "PMF2003456",
+  "bankCode" : "001",
+  "accountHolderName" : "Ibrahim Nasir",
+  "holderIdentificationType" : "NIC",
+  "holderIdentificationNumber" : "B234567",
+  "balance" : 834.50,
+  "status" : "ACTIVE",
+  "currency" : "MVR"
+}, {
+  "accountNumber" : "PMF3009981",
+  "bankCode" : "001",
+  "accountHolderName" : "Aishath Liyana",
+  "holderIdentificationType" : "NIC",
+  "holderIdentificationNumber" : "C345678",
+  "balance" : 0.00,
+  "status" : "INACTIVE",
+  "currency" : "MVR"
+}, {
+  "accountNumber" : "4567812345",
+  "bankCode" : "002",
+  "accountHolderName" : "John Smith",
+  "holderIdentificationType" : "PASSPORT",
+  "holderIdentificationNumber" : "P9988776",
+  "balance" : 2450.00,
+  "status" : "ACTIVE",
+  "currency" : "USD"
+}, {
+  "accountNumber" : "8945621103",
+  "bankCode" : "002",
+  "accountHolderName" : "Michael Brown",
+  "holderIdentificationType" : "PASSPORT",
+  "holderIdentificationNumber" : "M4433221",
+  "balance" : 520.40,
+  "status" : "CLOSED",
+  "currency" : "USD"
+}, {
+  "accountNumber" : "1290045783",
+  "bankCode" : "002",
+  "accountHolderName" : "Emma Wilson",
+  "holderIdentificationType" : "NIC",
+  "holderIdentificationNumber" : "D456789",
+  "balance" : 9740.10,
+  "status" : "ACTIVE",
+  "currency" : "USD"
+}, {
+  "accountNumber" : "WF0002345678",
+  "bankCode" : "003",
+  "accountHolderName" : "Robert Davis",
+  "holderIdentificationType" : "PASSPORT",
+  "holderIdentificationNumber" : "L8899002",
+  "balance" : 125.75,
+  "status" : "ACTIVE",
+  "currency" : "USD"
+}, {
+  "accountNumber" : "WF1009876543",
+  "bankCode" : "003",
+  "accountHolderName" : "Sophia Harris",
+  "holderIdentificationType" : "NIC",
+  "holderIdentificationNumber" : "E567890",
+  "balance" : 3780.50,
+  "status" : "INACTIVE",
+  "currency" : "USD"
+}, {
+  "accountNumber" : "WF9001122334",
+  "bankCode" : "003",
+  "accountHolderName" : "Noah Anderson",
+  "holderIdentificationType" : "PASSPORT",
+  "holderIdentificationNumber" : "P1122998",
+  "balance" : 600.00,
+  "status" : "ACTIVE",
+  "currency" : "USD"
+}, {
+  "accountNumber" : "998877665544",
+  "bankCode" : "004",
+  "accountHolderName" : "Olivia Martinez",
+  "holderIdentificationType" : "NIC",
+  "holderIdentificationNumber" : "F678901",
+  "balance" : 15200.00,
+  "status" : "ACTIVE",
+  "currency" : "USD"
+}, {
+  "accountNumber" : "110022334455",
+  "bankCode" : "004",
+  "accountHolderName" : "Ethan Walker",
+  "holderIdentificationType" : "PASSPORT",
+  "holderIdentificationNumber" : "W5566882",
+  "balance" : 50.90,
+  "status" : "CLOSED",
+  "currency" : "USD"
+}, {
+  "accountNumber" : "221133445566",
+  "bankCode" : "004",
+  "accountHolderName" : "Mia Johnson",
+  "holderIdentificationType" : "NIC",
+  "holderIdentificationNumber" : "G789012",
+  "balance" : 789.20,
+  "status" : "ACTIVE",
+  "currency" : "USD"
+}, {
+  "accountNumber" : "WB445501",
+  "bankCode" : "005",
+  "accountHolderName" : "Lucas Carter",
+  "holderIdentificationType" : "NIC",
+  "holderIdentificationNumber" : "H890123",
+  "balance" : 3000.00,
+  "status" : "ACTIVE",
+  "currency" : "MVR"
+}, {
+  "accountNumber" : "WB772210",
+  "bankCode" : "005",
+  "accountHolderName" : "Ava Thompson",
+  "holderIdentificationType" : "PASSPORT",
+  "holderIdentificationNumber" : "T5511998",
+  "balance" : 112.25,
+  "status" : "INACTIVE",
+  "currency" : "USD"
+}, {
+  "accountNumber" : "WB123980",
+  "bankCode" : "005",
+  "accountHolderName" : "Henry Wilson",
+  "holderIdentificationType" : "NIC",
+  "holderIdentificationNumber" : "J901234",
+  "balance" : 1180.75,
+  "status" : "ACTIVE",
+  "currency" : "MVR"
+} ]

@@ -1,0 +1,21 @@
+[ {
+  "bankCode" : "001",
+  "bankName" : "PayMedia FinTech",
+  "liquidityBalance" : 100000.00
+}, {
+  "bankCode" : "002",
+  "bankName" : "Chase Bank",
+  "liquidityBalance" : 100000.00
+}, {
+  "bankCode" : "003",
+  "bankName" : "Wells Fargo",
+  "liquidityBalance" : 100000.00
+}, {
+  "bankCode" : "004",
+  "bankName" : "Citibank",
+  "liquidityBalance" : 100000.00
+}, {
+  "bankCode" : "005",
+  "bankName" : "Western Bank",
+  "liquidityBalance" : 100000.00
+} ]
