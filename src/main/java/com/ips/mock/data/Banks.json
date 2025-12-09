@@ -1,21 +1,21 @@
 [ {
-  "bankCode" : "001",
+  "bankCode" : "PMFTSL1K",
   "bankName" : "PayMedia FinTech",
   "liquidityBalance" : 100000.00
 }, {
-  "bankCode" : "002",
+  "bankCode" : "CHBKSL3J",
   "bankName" : "Chase Bank",
   "liquidityBalance" : 100000.00
 }, {
-  "bankCode" : "003",
+  "bankCode" : "WLFGSL6S",
   "bankName" : "Wells Fargo",
   "liquidityBalance" : 100000.00
 }, {
-  "bankCode" : "004",
-  "bankName" : "Citibank",
+  "bankCode" : "CTBKSL2X",
+  "bankName" : "Citi Bank",
   "liquidityBalance" : 100000.00
 }, {
-  "bankCode" : "005",
+  "bankCode" : "WSTNSL4E",
   "bankName" : "Western Bank",
   "liquidityBalance" : 100000.00
 } ]
