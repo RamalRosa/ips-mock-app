@@ -45,4 +45,18 @@ public class TransactionController {
     public ResponseEntity<String> creditTransfer(@RequestBody CreditTransferRequest request) {
         return transactionService.processCreditTransfer(request);
     }
+
+    /**
+     * Balance inquiry – request is ISO-style XML (camt.003-like),
+     * response is ISO-style XML (camt.004 with balance).
+     */
+    @PostMapping(
+            value = "/balance-inquiry",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_XML_VALUE
+    )
+    public ResponseEntity<String> balanceInquiry(@RequestBody AccountVerificationRequest dto) {
+        return transactionService.balanceInquiryFromIsoXml(dto);
+    }
+
 }

@@ -24,12 +24,11 @@ import java.util.UUID;
 @Slf4j
 public class TransactionService {
 
+    private static final DateTimeFormatter ISO_OFFSET =
+            DateTimeFormatter.ISO_OFFSET_DATE_TIME;
     private final AccountStorageService accountStorageService;
     private final BankStorageService bankStorageService;
     private final ObjectMapper objectMapper = new ObjectMapper();
-
-    private static final DateTimeFormatter ISO_OFFSET =
-            DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 
     public TransactionService(AccountStorageService accountStorageService,
                               BankStorageService bankStorageService) {
@@ -42,14 +41,14 @@ public class TransactionService {
     // ========================================================================
     public ResponseEntity<String> verifyAccount(AccountVerificationRequest request) {
 
-        String msgId      = "AV-" + OffsetDateTime.now(ZoneOffset.UTC)
+        String msgId = "AV-" + OffsetDateTime.now(ZoneOffset.UTC)
                 .format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-        String queryRef   = request.getReference() != null
+        String queryRef = request.getReference() != null
                 ? request.getReference()
                 : "AVQ-" + UUID.randomUUID().toString().replace("-", "").substring(0, 10);
 
         String requestingBic = request.getRequestingBankBic(); // e.g. HNBLSLFRXXX
-        String targetBic     = request.getTargetBankBic();     // e.g. DEUTDEFFXXX
+        String targetBic = request.getTargetBankBic();     // e.g. DEUTDEFFXXX
 
         try {
             log.info("[ACCOUNT-VERIFY] Incoming request: {}",
@@ -166,24 +165,23 @@ public class TransactionService {
                                      String errDesc) {
         String now = OffsetDateTime.now(ZoneOffset.UTC).format(ISO_OFFSET);
 
-        StringBuilder xml = new StringBuilder();
-        xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-        xml.append("<Document xmlns=\"urn:iso:std:iso:20022:tech:xsd:camt.004.001.08\">\n");
-        xml.append("  <GetAcctResponse>\n");
-        xml.append("    <MsgHdr>\n");
-        xml.append("      <MsgId>").append(esc(msgId)).append("</MsgId>\n");
-        xml.append("      <CreDtTm>").append(now).append("</CreDtTm>\n");
-        xml.append("    </MsgHdr>\n");
-        xml.append("    <RptOrErr>\n");
-        xml.append("      <Err>\n");
-        xml.append("        <ErrCd>").append(esc(errCode)).append("</ErrCd>\n");
-        xml.append("        <Desc>").append(esc(errDesc)).append("</Desc>\n");
-        xml.append("      </Err>\n");
-        xml.append("    </RptOrErr>\n");
-        xml.append("  </GetAcctResponse>\n");
-        xml.append("</Document>\n");
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<Document xmlns=\"urn:iso:std:iso:20022:tech:xsd:camt.004.001.08\">\n" +
+                "  <GetAcctResponse>\n" +
+                "    <MsgHdr>\n" +
+                "      <MsgId>" + esc(msgId) + "</MsgId>\n" +
+                "      <CreDtTm>" + now + "</CreDtTm>\n" +
+                "    </MsgHdr>\n" +
+                "    <RptOrErr>\n" +
+                "      <Err>\n" +
+                "        <ErrCd>" + esc(errCode) + "</ErrCd>\n" +
+                "        <Desc>" + esc(errDesc) + "</Desc>\n" +
+                "      </Err>\n" +
+                "    </RptOrErr>\n" +
+                "  </GetAcctResponse>\n" +
+                "</Document>\n";
 
-        return xml.toString();
+        return xml;
     }
 
     // ========================================================================
@@ -197,9 +195,9 @@ public class TransactionService {
                 ? request.getEndToEndId()
                 : "E2E-" + request.getInitiatorAccountNumber() + "-" + request.getRecipientAccountNumber();
 
-        String debtorAgentBic   = request.getInitiatorBic();   // e.g. "HNBLSLFRXXX"
+        String debtorAgentBic = request.getInitiatorBic();   // e.g. "HNBLSLFRXXX"
         String creditorAgentBic = request.getRecipientBic();   // e.g. "DEUTDEFFXXX"
-        String currency         = request.getCurrency() != null ? request.getCurrency() : "LKR";
+        String currency = request.getCurrency() != null ? request.getCurrency() : "LKR";
 
         try {
             log.info("[CT] IPS RECEIVES pacs.008 CREDIT TRANSFER REQUEST");
@@ -426,4 +424,145 @@ public class TransactionService {
                 .replace("<", "&lt;")
                 .replace(">", "&gt;");
     }
+
+    // In TransactionService
+
+    public ResponseEntity<String> balanceInquiryFromIsoXml(AccountVerificationRequest dto) {
+        return balanceInquiry(dto);
+    }
+
+    // In TransactionService
+
+    private ResponseEntity<String> balanceInquiry(AccountVerificationRequest request) {
+
+        String msgId = request.getReference() != null
+                ? request.getReference()
+                : "BI-" + OffsetDateTime.now(ZoneOffset.UTC)
+                .format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+
+        String requestingBic = request.getRequestingBankBic(); // e.g. HNBLSLFRXXX
+        String targetBic = request.getTargetBankBic();     // e.g. DEUTDEFFXXX
+
+        try {
+            log.info("[BAL-INQ] Incoming request: requestingBankBic={}, targetBankBic={}, account={}",
+                    requestingBic, targetBic, request.getAccountNumber());
+
+            Account account = accountStorageService.getAccountByAccountNumberAndBankCode(
+                    request.getAccountNumber(),
+                    targetBic
+            );
+
+            if (account == null) {
+                log.warn("[BAL-INQ] Account not found for bank={} account={}",
+                        targetBic, request.getAccountNumber());
+
+                String xml = buildCamt004Error(
+                        msgId,
+                        msgId,         // reuse as query ref
+                        requestingBic,
+                        targetBic,
+                        request.getAccountNumber(),
+                        "AC04",
+                        "Unknown account for balance inquiry."
+                );
+
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .contentType(MediaType.APPLICATION_XML)
+                        .body(xml);
+            }
+
+            // Assume your Account DTO has getBalance() and (optionally) getCurrency()
+            BigDecimal balance = account.getBalance();
+            String currency = "LKR";
+            try {
+                // only if you have currency on account
+                if (account.getCurrency() != null) {
+                    currency = account.getCurrency();
+                }
+            } catch (Exception ignored) {
+            }
+
+            String xml = buildCamt004WithBalance(
+                    msgId,
+                    requestingBic,
+                    targetBic,
+                    request.getAccountNumber(),
+                    balance,
+                    currency
+            );
+
+            return ResponseEntity.status(HttpStatus.OK)
+                    .contentType(MediaType.APPLICATION_XML)
+                    .body(xml);
+
+        } catch (Exception e) {
+            log.error("[BAL-INQ] Error: {}", e.getMessage(), e);
+
+            String xml = buildCamt004Error(
+                    msgId,
+                    msgId,
+                    requestingBic,
+                    targetBic,
+                    request.getAccountNumber(),
+                    "U999",
+                    "Internal error during balance inquiry."
+            );
+
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .contentType(MediaType.APPLICATION_XML)
+                    .body(xml);
+        }
+    }
+
+    // In TransactionService
+
+    private String buildCamt004WithBalance(String msgId,
+                                           String requestingBic,
+                                           String targetBic,
+                                           String accountNumber,
+                                           BigDecimal balance,
+                                           String currency) {
+        String now = OffsetDateTime.now(ZoneOffset.UTC).format(ISO_OFFSET);
+
+        String balStr = balance != null
+                ? balance.setScale(2, RoundingMode.HALF_UP).toPlainString()
+                : "0.00";
+
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<Document xmlns=\"urn:iso:std:iso:20022:tech:xsd:camt.004.001.08\">\n" +
+                "  <GetAcctResponse>\n" +
+                "    <MsgHdr>\n" +
+                "      <MsgId>" + esc(msgId) + "</MsgId>\n" +
+                "      <CreDtTm>" + now + "</CreDtTm>\n" +
+                "      <ReqngPty>\n" +
+                "        <Pty>\n" +
+                "          <Id>\n" +
+                "            <OrgId>\n" +
+                "              <AnyBIC>" + esc(requestingBic) + "</AnyBIC>\n" +
+                "            </OrgId>\n" +
+                "          </Id>\n" +
+                "        </Pty>\n" +
+                "      </ReqngPty>\n" +
+                "    </MsgHdr>\n" +
+                "    <RptOrErr>\n" +
+                "      <Rpt>\n" +
+                "        <Acct>\n" +
+                "          <Id><Othr><Id>" + esc(accountNumber) + "</Id></Othr></Id>\n" +
+                "          <Nm>SIMULATED ACCOUNT HOLDER</Nm>\n" +
+                "          <Svcr><FinInstnId><BICFI>" + esc(targetBic) + "</BICFI></FinInstnId></Svcr>\n" +
+                "          <Sts>ACTV</Sts>\n" +
+                "          <Bal>\n" +
+                "            <Tp><CdOrPrtry><Cd>CLBD</Cd></CdOrPrtry></Tp>\n" +
+                "            <Amt Ccy=\"" + esc(currency) + "\">" +
+                balStr + "</Amt>\n" +
+                "          </Bal>\n" +
+                "        </Acct>\n" +
+                "      </Rpt>\n" +
+                "    </RptOrErr>\n" +
+                "  </GetAcctResponse>\n" +
+                "</Document>\n";
+
+        return xml;
+    }
+
 }
