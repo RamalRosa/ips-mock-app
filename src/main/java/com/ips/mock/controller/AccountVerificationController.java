@@ -1,6 +1,6 @@
 package com.ips.mock.controller;
 
-import com.ips.mock.request.AccountVerificationRequest;
+import com.ips.mock.request.AccountVerificationRequestOld;
 import com.ips.mock.response.DefaultResponse;
 import com.ips.mock.service.AccountVerificationService;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class AccountVerificationController {
     }
 
     @PostMapping("/verify")
-    public ResponseEntity<DefaultResponse> verifyAccount(@RequestBody AccountVerificationRequest request) {
+    public ResponseEntity<DefaultResponse> verifyAccount(@RequestBody AccountVerificationRequestOld request) {
         return accountVerificationService.accountVerificationAppReq(request);
     }
 }

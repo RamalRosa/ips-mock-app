@@ -11,8 +11,8 @@ import java.time.format.DateTimeFormatter;
 @Service
 public class SwiftMTService {
     // Hard-coded BICs for simulation
-    private static final String SENDER_BIC = "BKAALKLXAXXX";
-    private static final String RECEIVER_BIC = "BKBKDEFFXXXX";
+    private static final String SENDER_BIC = "BKAALKLXADVP";
+    private static final String RECEIVER_BIC = "BKBKDEFFMVP";
 
     private static final DateTimeFormatter YYMMDD = DateTimeFormatter.ofPattern("yyMMdd");
 

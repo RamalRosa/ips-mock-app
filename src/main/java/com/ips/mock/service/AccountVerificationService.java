@@ -2,7 +2,7 @@ package com.ips.mock.service;
 
 import com.ips.mock.dto.Account;
 import com.ips.mock.dto.Bank;
-import com.ips.mock.request.AccountVerificationRequest;
+import com.ips.mock.request.AccountVerificationRequestOld;
 import com.ips.mock.response.AccountVerificationResponse;
 import com.ips.mock.response.DefaultResponse;
 import com.ips.mock.service.storage.AccountStorageService;
@@ -23,7 +23,7 @@ public class AccountVerificationService {
         this.accountStorageService = accountStorageService;
     }
 
-    public ResponseEntity<DefaultResponse> accountVerificationAppReq(AccountVerificationRequest request) {
+    public ResponseEntity<DefaultResponse> accountVerificationAppReq(AccountVerificationRequestOld request) {
         try {
             Bank initiatorBank = getBankByCode(request.getInitiator());
             if (initiatorBank == null) {

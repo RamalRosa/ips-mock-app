@@ -1,11 +1,11 @@
 [ {
   "bankCode" : "PMFTSL1K",
   "bankName" : "PayMedia FinTech",
-  "liquidityBalance" : 100000.00
+  "liquidityBalance" : 99850.00
 }, {
   "bankCode" : "CHBKSL3J",
   "bankName" : "Chase Bank",
-  "liquidityBalance" : 100000.00
+  "liquidityBalance" : 100150.00
 }, {
   "bankCode" : "WLFGSL6S",
   "bankName" : "Wells Fargo",

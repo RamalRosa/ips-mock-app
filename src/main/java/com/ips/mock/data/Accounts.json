@@ -4,7 +4,7 @@
   "accountHolderName" : "Ahmed Mohamed",
   "holderIdentificationType" : "NIC",
   "holderIdentificationNumber" : "A123456",
-  "balance" : 14800.75,
+  "balance" : 14650.75,
   "status" : "ACTIVE",
   "currency" : "MVR"
 }, {
@@ -31,7 +31,7 @@
   "accountHolderName" : "John Smith",
   "holderIdentificationType" : "PASSPORT",
   "holderIdentificationNumber" : "P9988776",
-  "balance" : 2450.00,
+  "balance" : 2600.00,
   "status" : "ACTIVE",
   "currency" : "USD"
 }, {
